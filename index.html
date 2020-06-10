@@ -1,0 +1,73 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style>
+#cnt{
+display:block;
+background-color:#f1f1f1;
+padding:20px 20px;
+text-align:center;
+}
+#l{
+font-family:san-serif;
+}
+.out{
+position:absolute;
+top:95%;
+left:10%;
+}
+#btn{
+margin-top:10px;
+margin-bottom:60px;
+}
+.head{
+font-family:san-serif;
+text-align:center;
+}
+.note{
+color:red;
+}
+
+</style>
+
+</head>
+<body >
+ <div class="login">
+	<h1 class= "head">Diabetes predictor</h1>
+	
+
+     <!-- Main Input For Receiving Query to our ML -->
+     <div class="container" id= "cnt">
+    <form action="{{ url_for('predict')}}"method="post">
+    <p class="note">Fill the form with acceptable values</p>
+        <label for = "pregnancies" id= "l">No.of Pregnencies</label><br>
+    	<input type="text" name="preg" placeholder="pregnencies" required="required" /><br>
+    	  <label for = "glucose" id= "l">Glucose</label><br>
+        <input type="text" name="glu" placeholder="glucose" required="required" /><br>
+          <label for = "pregnancies" id= "l">Blood Pressure</label><br>
+		<input type="text" name="bp" placeholder="bp" required="required" /><br>
+		  <label for = "pregnancies" id= "l">Skin thickness</label><br>
+		<input type="text" name="skinthick" placeholder="skin thickness" required="required" /><br>
+		  <label for = "pregnancies" id= "l">Insulin</label><br>
+		<input type="text" name="insulin" placeholder="insulin" required="required" /><br>
+		  <label for = "pregnancies" id= "l">BMI</label><br>
+		<input type="text" name="bmi" placeholder="bmi" required="required" /><br>
+		  <label for = "pregnancies" id= "l">DiabetesPedigreeFunction</label><br>
+		<input type="text" name="dpercent" placeholder="DiabetesPedigreeFunction    " required="required" /><br>
+        <button type="submit" class="btn-color-primary" id="btn" >Predict</button>
+    </form>
+    </div>
+
+   <br>
+   <br>
+  <h3 class= "out"> {{ prediction_text }}</h3>
+
+ </div>
+</body>
+</html>
